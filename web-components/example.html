@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Components</title>
+    <style>
+        /* the host */
+        #host {
+            margin: 20px;
+            background-color: #ccc;
+        }
+        /* ^ allows us to select accross the boundary of the DOMs */
+        #host ^ h2 {
+            color: red;
+        }
+        #host ^ h2:hover {
+            color: blue; 
+        }
+        /* custom elements can be styled */
+        #host ^ x-foo { 
+            text-transform: uppercase;
+        }
+        /* content from the light dom can be styled */
+        #host ^ *::content h3 > span {
+            text-decoration: underline;  
+        }        
+    </style>
+</head>
+<body>
+
+    <h2>An h2 in the light DOM<h2>
+
+    <!-- the host element for the shadow DOM -->
+    <div id="host">
+      <h1>Title (from the light dom)</h1>
+      <h3>Subtitle <span>(inserted in to the shadow dom)</span></h3>
+    </div>
+
+    <!-- an HTML template -->
+    <template id="mytemplate">
+        <style>
+            /* we can style the host element from within the template */
+            :host {
+                border: 3px solid #000; 
+            }
+            /* localised <h2> styles */
+            h2 {
+                background-color: yellow;
+            }
+        </style>
+        <img src="">
+        <p class="comment"></p>
+        <h2 pseudo="x-bar">I am an HTML template!</h2>
+        <x-foo>I am a custom element</x-foo>
+        <!-- distributed node (take from the light dom) -->
+        <content select="h3"></content>
+    </template>
+
+    <script>
+
+        // html template
+        var t = document.querySelector('#mytemplate');
+        t.content.querySelector('img').src = 'http://lorempixel.com/400/200/';
+        t.content.querySelector('.comment').textContent = Math.random();
+
+        // glue an instance of the template to the shadow dom 
+        var host = document.querySelector('#host');
+        var shadow = host.createShadowRoot();
+        shadow.resetStyleInheritance = true;
+        shadow.appendChild(t.content.cloneNode(true));
+
+        // events should bubble up through the shadow 
+        document.body.addEventListener('click', function (e) {
+            console.log(e);
+        }, true)
+    
+    </script>
+</body>
+</html>
