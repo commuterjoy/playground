@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flexbox</title>
+    <style>
+       
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .box {
+            display: flex;
+            -webkit-flex-flow: row wrap;
+            justify-content: space-around;
+            align-items: center;
+         }
+            
+        .box p {
+            background: tomato;
+            height: 100px;
+            width: 200px;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            font-size: 30px;
+            order: 2;
+            text-shadow: 1px 1px #333;
+        }
+       
+        .box p:first-child {
+            order: 0;
+        } 
+
+        /* small screens get a single stacked column */
+        @media all and (max-width: 400px) {
+          .box {
+            flex-direction: column;
+          }
+        }
+       
+        /* finesse the margins where the # of boxes does not divide neatly with the innerWidth */ 
+        @media all and (min-width: 1000px) and (max-width: 1100px) {
+        .box {
+            margin: 0 50px;
+          }
+        }
+        
+        @media all and (min-width: 1100px) and (max-width: 1200px) {
+        .box {
+            margin: 0 100px;
+          }
+        }
+        
+        /* change the reading direction of the top 6 stories when in a 2x6 & 3x4 portrait grids */
+        @media all and (min-width: 401px) and (max-width: 599px) {
+          .box p:nth-child(2) {
+            order: 2; 
+          }
+          .box p:nth-child(3) {
+            order: 1; 
+          }
+        }
+
+        @media all and (min-width: 600px) and (max-width: 800px) {
+          .box p:nth-child(3) {
+            order: 1; 
+          }
+          .box p:nth-child(5) {
+            order: 1; 
+          }
+        }
+
+        /* visual cue for the second story */
+        .box p:nth-child(2) {
+            background-image: url(http://i.guim.co.uk/item-620/sys-images/Sport/Pix/pictures/2013/12/31/1388485154912/Olivier-Giroud-010.jpg);
+            background-size: 100%;
+        }
+
+        body > p {
+            margin: 1em;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        An attempt to create a fixed unit / fluid space promotional grid with flexbox. We finesse the margins with media-queries to ensure
+        the container always has the space around it to create an equal rows.
+    </p>
+    <div class="box">
+        <p> 1 </p> <p> 2 </p> <p> 3 </p> <p> 4 </p> <p> 5 </p> <p> 6 </p> <p> 7 </p> <p> 8 </p> <p> 9 </p> <p> 10 </p> <p> 11 </p> <p> 12 </p>
+    </div>
+</body>
+</html>
