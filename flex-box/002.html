@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flexbox</title>
+    <style>
+       
+        body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .box {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between;
+            align-items: stretch;
+            align-content: center;
+            min-height: 100vh;
+            margin: 0 10px;
+        }
+
+        .box div {
+            flex: 0 1 auto;
+            align-self: auto;
+            background-color: #eee;
+            min-height: 50px;
+            line-height: 20px;
+        }
+
+        .box .a, .box .c {
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .box .b {
+            padding: 10px;
+            margin: 0;
+            border-color: white;
+            border-width: 1px 0 1px;
+            border-style: solid;
+        }
+
+        @media all and (min-width: 400px) {
+            .box .b p {
+                -webkit-column-count: 2;
+                -webkit-column-gap: 40px;
+            }
+        }
+
+        @media all and (min-width: 600px) {
+            .box .b p {
+                -webkit-column-count: 3;
+                -webkit-column-gap: 40px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+      <div class="a">header (stuck to the top of the container)</div>
+      <div class="b">
+          <p>
+              Aenean hendrerit a purus quis tincidunt. Class aptent taciti
+              sociosqu ad litora torquent per conubia nostra, per inceptos
+              himenaeos. Sed blandit bibendum est et aliquet. Sed sagittis
+              nulla ut ante pharetra rutrum. Maecenas leo elit, ultricies
+              laoreet hendrerit in, congue non augue.  Phasellus
+              condimentum, augue sit amet elementum egestas, metus tellus
+              tempus dui, nec feugiat ante urna ac nunc. Donec ut ultricies
+              dui.  Suspendisse consequat magna vel nisi pulvinar, in
+              commodo sapien suscipit. Vestibulum ipsum tortor, tincidunt
+              quis nisl ut, consectetur lacinia urna. Donec aliquet dictum
+              est, ut consequat turpis condimentum a. Nunc suscipit volutpat
+              erat id ornare. Vivamus vitae volutpat lorem. Maecenas
+              Aenean hendrerit a purus quis tincidunt. Class aptent taciti
+              sociosqu ad litora torquent per conubia nostra, per inceptos
+              himenaeos. Sed blandit bibendum est et aliquet. Sed sagittis
+              nulla ut ante pharetra rutrum. Maecenas leo elit, ultricies
+              laoreet hendrerit in, congue non augue.  Phasellus
+              condimentum, augue sit amet elementum egestas, metus tellus
+              tempus dui, nec feugiat ante urna ac nunc. Donec ut ultricies
+              dui.  Suspendisse consequat magna vel nisi pulvinar, in
+              commodo sapien suscipit. Vestibulum ipsum tortor, tincidunt
+              quis nisl ut, consectetur lacinia urna. Donec aliquet dictum
+              est, ut consequat turpis condimentum a. Nunc suscipit volutpat
+              sit amet urna pharetra, blandit odio quis, laoreet quam. Nulla
+              nec est porttitor, sodales mauris nec, pellentesque sem.
+          </p>
+      </div>
+      <div class="c">footer (stuck to bottom of the container)</div>
+    </div>
+</body>
+</html>
