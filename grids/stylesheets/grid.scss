@@ -1,14 +1,13 @@
 
-$font-stack: serif;
-$primary-color: #333;
+@import 'modules/typography.scss';
+@import 'modules/colour.scss';
+
 $grid: 16px;
 
 body {
-    font: 100% $font-stack;
-    color: $primary-color;
+    @include font-1; 
     margin: 0px;
     padding: 0px;
-    line-height: $grid*2;
 }
 
 .u-hgrid {
@@ -19,6 +18,15 @@ body {
     background:url(../bg-vertical.png) repeat;
 }
 
+.u-columns {
+    -webkit-column-count: 2;
+    -webkit-column-gap: $grid*2;
+    
+    @media only screen and (max-width: $grid*30) {
+        -webkit-column-count: 1;
+    }     
+}
+
 .article__container {
     margin: $grid auto; 
     max-width: $grid*32;
@@ -27,8 +35,7 @@ body {
 }
 
 .article__container-headline {
-    line-height: $grid*2;
-    font-size: $grid*2;
+    @include font-2; 
 }
 
 .article__container-date {
@@ -53,7 +60,7 @@ body {
 }
 
 .code__block {
-    border-left: #000 solid 1px;
+    border-left: $highlight-color solid 1px;
     padding-left: $grid;
     margin-left: -$grid;
     
