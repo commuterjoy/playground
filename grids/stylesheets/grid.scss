@@ -1,0 +1,64 @@
+
+$font-stack: serif;
+$primary-color: #333;
+$grid: 16px;
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+    margin: 0px;
+    padding: 0px;
+    line-height: $grid*2;
+}
+
+.u-hgrid {
+    background:url(../bg.png) repeat;
+}
+
+.u-vgrid {
+    background:url(../bg-vertical.png) repeat;
+}
+
+.article__container {
+    margin: $grid auto; 
+    max-width: $grid*32;
+    text-align:justify;
+    padding: 0 $grid;
+}
+
+.article__container-headline {
+    line-height: $grid*2;
+    font-size: $grid*2;
+}
+
+.article__container-date {
+    line-height: $grid;
+    box-sizing: border-box;
+    font-style: italic;
+}
+
+.image {
+    width: 224px;
+    height: 224px;
+    display: inline-block;
+    float: right;
+    margin: $grid 0 $grid $grid;
+    
+    @media only screen and (max-width: 320px) {
+        margin: $grid 0;
+        display: block;
+        width: 100%;
+        float: inherit;
+    }     
+}
+
+.code__block {
+    border-left: #000 solid 1px;
+    padding-left: $grid;
+    margin-left: -$grid;
+    
+    @media only screen and (max-width: $grid*34) {
+        margin-left: 0;
+    }     
+
+}
