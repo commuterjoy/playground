@@ -1,13 +1,16 @@
 
+$grid: 16px;
+
 @import 'modules/typography.scss';
 @import 'modules/colour.scss';
+@import 'modules/lists.scss';
 
-$grid: 16px;
 
 body {
     @include font-1; 
-    margin: 0px;
+    margin: $grid*6 0px;
     padding: 0px;
+    background-color: rgba(243, 234, 239, 0.28);
 }
 
 .u-hgrid {
@@ -21,6 +24,8 @@ body {
 .u-columns {
     -webkit-column-count: 2;
     -webkit-column-gap: $grid*2;
+    -moz-column-count: 2;
+    -moz-column-gap: $grid*2;
     
     @media only screen and (max-width: $grid*30) {
         -webkit-column-count: 1;
@@ -30,7 +35,6 @@ body {
 .article__container {
     margin: $grid auto; 
     max-width: $grid*32;
-    text-align:justify;
     padding: 0 $grid;
 }
 
@@ -49,9 +53,10 @@ body {
     height: 224px;
     display: inline-block;
     float: right;
-    margin: $grid 0 $grid $grid;
-    
-    @media only screen and (max-width: 320px) {
+    margin: $grid;
+    margin-right: -$grid;
+
+    @media only screen and (max-width: $grid*40) {
         margin: $grid 0;
         display: block;
         width: 100%;
@@ -67,5 +72,9 @@ body {
     @media only screen and (max-width: $grid*34) {
         margin-left: 0;
     }     
-
 }
+
+.subheading {
+    @include font-3;
+}
+

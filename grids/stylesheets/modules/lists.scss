@@ -1,0 +1,9 @@
+
+ul {
+    list-style-position: outside;
+    padding-left: 0;
+    
+    @media only screen and (max-width: $grid*36) {
+        list-style-position: inside;
+    }     
+}

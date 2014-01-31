@@ -1,17 +1,29 @@
 
-$font-stack: serif;
+$font-stack: Georgia, serif;
+
+@mixin fonts {
+    text-rendering: optimizeLegibility;
+}
 
 @mixin font-1 {
     font: 100% $font-stack;
     line-height: $grid*2;
     color: $primary-color;
+    text-align:justify;
 }
 
 @mixin font-2 {
-    line-height: $grid*2;
-    font-size: $grid*2;
+    line-height: $grid*3;
+    font-size: $grid*3;
     color: $highlight-color;
-    text-shadow: 1px 1px $primary-color;
+    text-shadow: 1px 1px #ffffff;
     font-weight: normal;
+    text-align: initial;
 }
 
+@mixin font-3 {
+    font: 100% $font-stack;
+    line-height: $grid*2;
+    color: $primary-color;
+    font-weight: bold;
+}
