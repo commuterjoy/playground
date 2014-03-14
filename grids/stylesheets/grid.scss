@@ -5,7 +5,6 @@ $grid: 16px;
 @import 'modules/colour.scss';
 @import 'modules/lists.scss';
 
-
 body {
     @include font-1; 
     margin: $grid*6 0px;
@@ -32,10 +31,17 @@ body {
     }     
 }
 
-.article__container {
+.navigation__container, .article__container {
     margin: $grid auto; 
     max-width: $grid*32;
     padding: 0 $grid;
+}
+
+.navigation__container {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    @include font-4;
 }
 
 .article__container-headline {
@@ -49,29 +55,34 @@ body {
 }
 
 .image {
-    width: 224px;
-    height: 224px;
-    display: inline-block;
-    float: right;
+    max-width: 100%;
+    display: block;
     margin: $grid;
-    margin-right: -$grid;
-
-    @media only screen and (max-width: $grid*40) {
-        margin: $grid 0;
-        display: block;
-        width: 100%;
-        float: inherit;
+    margin-left: (-$grid*2);
+    border: $grid*2 solid $faded;
+    
+    @media only screen and (max-width: $grid*34) {
+        margin: 0;
+        border: 0;
     }     
 }
 
 .code__block {
-    border-left: $highlight-color solid 1px;
-    padding-left: $grid;
+    border-top: $highlight-color solid 2px;
+    border-bottom: $highlight-color solid 2px;
     margin-left: -$grid;
-    
+    margin-right: -$grid;
+
     @media only screen and (max-width: $grid*34) {
         margin-left: 0;
+        margin-right: 0;
     }     
+}
+
+.code__block-code {
+    display: block;
+    margin: $grid;
+    white-space: pre-wrap;
 }
 
 .subheading {

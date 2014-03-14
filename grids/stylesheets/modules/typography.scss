@@ -27,3 +27,11 @@ $font-stack: Georgia, serif;
     color: $primary-color;
     font-weight: bold;
 }
+
+@mixin font-4 {
+    font: 16px $font-stack;
+    line-height: $grid*2;
+    color: $primary-color;
+    font-weight: normal;
+    background-color: $text-highlight;
+}
