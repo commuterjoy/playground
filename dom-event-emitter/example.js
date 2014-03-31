@@ -29,9 +29,11 @@ SomeComponent.prototype.emit = function (message) {
 
 SomeComponent.prototype.render = function (str) {
         
-    this.el.textContent = '(' + this.id  + ') ' + str; 
+    this.el.textContent = '(' + this.id  + ') ' + str;
+    this.el.setAttribute('data-id', this.id) // DOM
     document.body.appendChild(this.el);
-
+    
+   
     // associate the custom event with an interaction with this component
     var self = this;
     this.el.addEventListener("click", function (e) {
@@ -44,10 +46,19 @@ SomeComponent.prototype.render = function (str) {
 SomeComponent.prototype.setupSubscriptions = function () {
     var self = this;
     document.addEventListener("widget:active", function (e) {
+        
+        /* option 1 - use a passed id in _detail_ the derive context */
         if (self.id !== e.detail.id) {
             console.log(e.detail.id, "clicked and recognised by", self.id)
             self.el.style.backgroundColor = "#ddd";
         } else {
+            self.el.style.backgroundColor = "#fff";
+        }
+
+        /* option 2 - use the target element to derive context */
+        if (self.id !== e.target.getAttribute('data-id')) {
+            self.el.style.backgroundColor = "#ddd";
+        } else { 
             self.el.style.backgroundColor = "#fff";
         }
     })
