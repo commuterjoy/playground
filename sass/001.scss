@@ -1,0 +1,71 @@
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box {
+    @include border-radius(10px);
+}
+
+.u-button-reset {
+    display: block;
+
+    &:focus {
+        outline: 0;
+        @include border-radius(10px);
+    }
+}
+
+.message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  @extend .message;
+  border-color: green;
+}
+
+.error {
+  @extend .message;
+  border-color: red;
+}
+
+.warning {
+  @extend .message;
+  border-color: yellow;
+}
+
+article[role="main"] {
+  float: left;
+  width: 600px / 960px * 100%;
+}
+
+nav { 
+    .p {
+        color: red;
+        a {
+            color: blue;
+        }
+    }
+    li { 
+        @extend .p;
+        border-color: green;
+    }
+    &.op {
+        border-color: blue;
+    }
+    
+}
